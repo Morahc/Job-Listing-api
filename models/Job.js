@@ -21,13 +21,15 @@ const jobSchema = mongoose.Schema(
     },
     desc: {
       description: { type: String, required: true },
-      requirements: [ { type: String, required: true } ],
-      qualification: [ { type: String, required: true } ],
+      requirements: [{ type: String, required: true }],
+      qualification: [{ type: String, required: true }],
     },
-    applicants: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'user',
-    }]
+    applicants: [
+      {
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+        isAccepted: { type: Boolean, default: false },
+      },
+    ],
   },
   {
     timestamps: true,

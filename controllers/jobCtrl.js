@@ -1,8 +1,8 @@
 import Job from '../models/Job.js';
 
 export const postJob = async (req, res) => {
-  if(!req.user.isEmployer){
-    res.status(401).json({ msg: 'User not authorized'})
+  if (!req.user.isEmployer) {
+    res.status(401).json({ msg: 'User not authorized' });
   }
 
   const { jobName, location, jobType, desc, deadline } = req.body;
@@ -17,7 +17,7 @@ export const postJob = async (req, res) => {
     });
 
     if (job) {
-      res.status(201).json({ msg: 'Job Posted' ,_id: job._id});
+      res.status(201).json({ msg: 'Job Posted', _id: job._id });
     }
   } catch (error) {
     console.error(error);
@@ -42,14 +42,67 @@ export const applyForJob = async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
 
-    job.applicants.push(req.user._id)
+    if (req.user.isEmployer) {
+      res.status(400).json({ msg: 'user not authorized' });
+    }
 
-    job.save()
+    const results = job.applicants.map((applicant) => {
+      return applicant._id;
+    });
 
-    res.json({ msg: 'Applied'}).status(201)
+    if (!results.includes(req.user._id)) {
+      job.applicants.push(req.user._id);
+      res.json({ msg: 'applied' }).status(201);
+    } else {
+      res.status(400).json({ msg: 'user already applied' });
+    }
 
+    await job.save();
   } catch (error) {
-    console.error(error)
-    res.status(400)
+    console.error(error);
+    res.status(400);
+  }
+};
+
+export const getJobs = async (req, res) => {
+  try {
+    const jobs = await Job.find({ user: req.user._id });
+    res.json(jobs).status(201);
+  } catch (error) {
+    console.error(error);
+    res.status(400);
+  }
+};
+
+export const getJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+    res.json(job);
+  } catch (error) {
+    console.error(error);
+    res.status(400);
+  }
+};
+
+export const updateApplied = async (req, res) => {
+  try {
+    const job = await Job.findOne({ applicants: { _id: req.params.uid } });
+
+    if (!job) {
+      res.status(400).json({ msg: 'job not found' });
+    }
+
+    const applicant = await job.applicants.find((applicant) => {
+      return applicant._id == req.params.uid;
+    });
+
+    applicant.isAccepted = true;
+
+    const updatedJob = await job.save();
+
+    res.json(updatedJob);
+  } catch (error) {
+    console.error(error);
+    res.status(400);
   }
 };

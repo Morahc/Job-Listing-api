@@ -86,7 +86,7 @@ export const getJob = async (req, res) => {
 
 export const updateApplied = async (req, res) => {
   try {
-    const job = await Job.findOne({ applicants: { _id: req.params.uid } });
+    const job = await Job.findById(req.params.jid);
 
     if (!job) {
       res.status(400).json({ msg: 'job not found' });

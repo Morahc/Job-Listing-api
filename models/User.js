@@ -1,41 +1,44 @@
-import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
-const userSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const userSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    isEmployer: {
+      type: Boolean,
+      required: true,
+    },
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  isEmployer: {
-    type: Boolean,
-    required: true
+  {
+    timestamps: true,
   }
-}, {
-  timestamps: true
-})
+);
 
 userSchema.pre('save', async function (next) {
-  if(!this.isModified('password')){
-    next()
+  if (!this.isModified('password')) {
+    next();
   }
 
-  const salt = await bcrypt.genSalt(10)
-  this.password = await bcrypt.hash(this.password, salt)
-})
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
 
-userSchema.methods.matchPassword = async function(password){
-  return await bcrypt.compare(password, this.password)
-}
+userSchema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
-const User = mongoose.model('User',userSchema )
+const User = mongoose.model('User', userSchema);
 
-export default User
+export default User;

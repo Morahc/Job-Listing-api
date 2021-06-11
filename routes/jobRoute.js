@@ -6,6 +6,7 @@ import {
   getJobs,
   updateApplied,
   getJob,
+  getUserJobs,
 } from '../controllers/jobCtrl.js';
 import { protect } from '../middleware/auth.js';
 
@@ -15,8 +16,9 @@ router
   .route('/')
   .post(protect, postJob)
   .delete(protect, deleteJob)
-  .get(protect, getJobs);
-router.get('/:id', protect, getJob);
+  .get(getJobs);
+router.get('/:id', getJob);
+router.get('/user', getUserJobs);
 router.put('/update/:jid/:uid', protect, updateApplied);
 router.put('/apply/:id', protect, applyForJob);
 

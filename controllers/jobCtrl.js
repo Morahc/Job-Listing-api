@@ -60,13 +60,23 @@ export const applyForJob = async (req, res) => {
     await job.save();
   } catch (error) {
     console.error(error);
-    res.status(400);
+    res.status(400).json(error);
   }
 };
 
 export const getJobs = async (req, res) => {
   try {
-    const jobs = await Job.find({ user: req.user._id });
+    const jobs = await Job.find({});
+    res.json(jobs).status(201);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json(error);
+  }
+};
+
+export const getUserJobs = async (req, res) => {
+  try {
+    const jobs = await Job.find({ _id: req.user.id });
     res.json(jobs).status(201);
   } catch (error) {
     console.error(error);

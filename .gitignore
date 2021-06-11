@@ -6,3 +6,5 @@ node_modules
 .env
 
 data.js
+client/src/reducers/jobReducer.js
+client/src/reducers/userReducer.js

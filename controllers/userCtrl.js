@@ -3,7 +3,7 @@ import User from '../models/User.js';
 import generateToken from '../utils/token.js';
 
 export const registerUser = async (req, res) => {
-  const { name, email, password, isEmployer } = req.body;
+  const { name, email, password, isEmployer, phone } = req.body;
   try {
     const userExists = await User.findOne({ email });
 
@@ -15,6 +15,7 @@ export const registerUser = async (req, res) => {
         email,
         password,
         isEmployer,
+        phone
       });
       if (user) {
         res
@@ -24,12 +25,12 @@ export const registerUser = async (req, res) => {
             email: user.email,
             token: generateToken(user._id),
           })
-          .status(201);
+          .status(201).json({ msg: 'User registered'});
       }
     }
   } catch (error) {
     console.error(error);
-    res.status(400);
+    res.status(400).json(error);
   }
 };
 
@@ -43,15 +44,16 @@ export const loginUser = async (req, res) => {
       res
         .json({
           name: user.name,
+          isEmployer: user.isEmployer,
           token: generateToken(user.id),
         })
         .status(200);
     } else {
-      res.status(400).json({ msg: 'User does not exist' });
+      res.status(404).json({ msg: 'Invalid email or password' });
     }
   } catch (error) {
     console.error(error);
-    res.status(400);
+    res.status(404).json(error);
   }
 };
 
@@ -85,6 +87,6 @@ export const editProfile = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(400);
+    res.status(400).json(error);
   }
 };

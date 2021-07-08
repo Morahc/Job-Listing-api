@@ -1,0 +1,12 @@
+#message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+  width: 25%;
+  position: absolute;
+  border: 1px solid var(--primary);
+  background-color: #fff;
+  color: var(--primary);
+  z-index: 99999;
+}

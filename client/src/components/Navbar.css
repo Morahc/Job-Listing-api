@@ -1,0 +1,22 @@
+.menu-icon i {
+  cursor: pointer;
+  font-size: 30px;
+}
+
+header .navbar-brand {
+  font-size: 36px;
+  color: var(--secondary);
+}
+header .nav .nav-link {
+  color: var(--primary)
+}
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+}

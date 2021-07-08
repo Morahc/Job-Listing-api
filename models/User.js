@@ -24,6 +24,12 @@ const userSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    pendingJobs: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Job', unique: true },
+    ],
+    bookmarks: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Job', unique: true },
+    ],
   },
   {
     timestamps: true,

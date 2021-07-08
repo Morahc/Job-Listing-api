@@ -1,5 +1,10 @@
 import mongoose from 'mongoose';
 
+const applicantSchema = mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+  isAccepted: { type: Boolean, default: false },
+});
+
 const jobSchema = mongoose.Schema(
   {
     user: {
@@ -17,6 +22,12 @@ const jobSchema = mongoose.Schema(
     },
     jobType: {
       type: String,
+      enum: ['Part-time', 'Full-time', 'Temporal', 'Internship'],
+      required: true,
+    },
+    category: {
+      type: String,
+      enum: ['health-care', 'construction', 'transportation', 'food & food services', 'finance', 'industry', 'IT', 'others'],
       required: true,
     },
     desc: {
@@ -24,12 +35,11 @@ const jobSchema = mongoose.Schema(
       requirements: [{ type: String, required: true }],
       qualification: [{ type: String, required: true }],
     },
-    applicants: [
-      {
-        user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-        isAccepted: { type: Boolean, default: false },
-      },
-    ],
+    deadline: {
+      type: Date,
+      required: true
+    },
+    applicants: [applicantSchema],
   },
   {
     timestamps: true,

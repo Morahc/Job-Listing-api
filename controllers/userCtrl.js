@@ -1,5 +1,5 @@
-import { jobs, employers } from '../data.js';
 import User from '../models/User.js';
+import Job from '../models/Job.js';
 import generateToken from '../utils/token.js';
 
 export const registerUser = async (req, res) => {
@@ -15,17 +15,16 @@ export const registerUser = async (req, res) => {
         email,
         password,
         isEmployer,
-        phone
+        phone,
       });
       if (user) {
         res
           .json({
             _id: user._id,
             name: user.name,
-            email: user.email,
-            token: generateToken(user._id),
           })
-          .status(201).json({ msg: 'User registered'});
+          .status(201)
+          .json({ msg: 'User registered' });
       }
     }
   } catch (error) {
@@ -43,9 +42,9 @@ export const loginUser = async (req, res) => {
     if (user && (await user.matchPassword(password))) {
       res
         .json({
-          name: user.name,
+          _id: user._id,
           isEmployer: user.isEmployer,
-          token: generateToken(user.id),
+          token: generateToken(user._id),
         })
         .status(200);
     } else {
@@ -53,23 +52,60 @@ export const loginUser = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(404).json(error);
+    res.status(400).json(error);
   }
 };
 
-export const userProfile = (req, res) => {
-  const { name, email, id } = req.user;
-  res.json({ name, email, id }).status(200);
+export const userProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id)
+      .populate({
+        path: 'bookmarks',
+        select: 'jobName location jobType createdAt',
+      })
+      .populate({
+        path: 'pendingJobs',
+        select: 'jobName location jobType createdAt applicants',
+        populate: {
+          path: 'applicants.user',
+          model: 'User',
+          select: 'name _id',
+        },
+      });
+
+    const newObj = [...user.pendingJobs.toObject(), user.pendingJobs.map((jobs) => {
+      jobs.applicants = (jobs.applicants.filter(a => a.user._id.toString() == req.user._id))
+    })]
+
+    const updatedUser = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      isEmployer: user.isEmployer,
+      phone: user.phone,
+      bookmarks: user.bookmarks,
+      pendingJobs: newObj.slice(0, newObj.length - 1)
+    }
+
+    if (user) {
+      res.json(updatedUser).status(200);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(400).json(error);
+  }
 };
 
 export const editProfile = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, phone } = req.body;
   try {
     const user = await User.findById(req.user._id);
 
     if (user) {
       user.name = name || user.name;
       user.email = email || user.email;
+      user.phone = phone || user.phone;
 
       if (password) {
         user.password = password;
@@ -82,11 +118,42 @@ export const editProfile = async (req, res) => {
           _id: updatedUser._id,
           name: updatedUser.name,
           email: updatedUser.email,
+          phone: updatedUser.phone,
         })
         .status(201);
     }
   } catch (error) {
     console.error(error);
     res.status(400).json(error);
+  }
+};
+
+export const updateApplied = async (req, res) => {
+  try {
+    if (!req.user.isEmployer) {
+      res.status(400).json({ msg: 'User not authorized' });
+    }
+
+    const job = await Job.find({
+      applicants: { $elemMatch: { _id: req.params.id } },
+      user: { _id: req.user._id },
+    }).select('applicants');
+
+    if (!job) {
+      res.status(400).json({ msg: 'job not found' });
+    }
+
+    const applicant = job[0].applicants.find((applicant) => {
+      return applicant._id == req.params.id;
+    });
+
+    applicant.isAccepted = !applicant.isAccepted;
+
+    const updatedJob = await job[0].save();
+
+    res.json({ msg: 'User Accepted' });
+  } catch (error) {
+    console.error(error);
+    res.status(400);
   }
 };

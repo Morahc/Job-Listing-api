@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap');
+
+:root {
+  --primary: #2F2E41 !important;
+  --secondary: #6c63ff !important;
+}
+
+* {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='tel'],
+button,
+select,
+textarea {
+  border-radius: 0 !important;
+  border: 1px solid var(--primary) !important;
+}
+
+input[type='checkbox']{
+  border-radius: 1.25rem !important;
+}
+
+a:focus,
+input:focus,
+textarea:focus,
+button:focus,
+select:focus {
+  text-decoration: none;
+  outline: none !important;
+}
+
+.bootstrap-select .btn:focus {
+  outline: none !important;
+}
+
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+[type='text'].form-control:focus,
+[type='password'].form-control:focus,
+[type='email'].form-control:focus,
+[type='tel'].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: none;
+  outline: none !important;
+}
+ 
+.scroll--simple::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll--simple::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+}
+.scroll--simple::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: rgba(0,0,0,0.5);
+}
+.scroll--simple::-webkit-scrollbar-thumb:hover{
+  background: rgba(0,0,0,0.4);
+}
+.scroll--simple::-webkit-scrollbar-thumb:active{
+  background: rgba(0,0,0,.7);
+}
+.white {
+  background-color: #fff;
+}
+
+.black {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.back-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute;
+  top: 3%; */
+}
+.dash-btn span{
+  font-size: 40px;
+  color: var(--primary) !important;
+}

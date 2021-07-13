@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 
 const Jobs = () => {
+  const [rJobs, setrJobs] = useState([]);
   const { jobs } = useSelector((state) => state.jobList);
 
-  const rJobs = jobs ? jobs.filter((job, i) => {
-    return i < 5
-  }) : []
+  useEffect(() => {
+    if (jobs.length !== 0) {
+      setrJobs(jobs.filter((job, i) => i < 5));
+    } else {
+      setrJobs([])
+    }
+  }, [jobs]);
 
   return (
     <section className='jobs container pt-4'>

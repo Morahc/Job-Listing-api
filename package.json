@@ -10,7 +10,8 @@
     "server": "nodemon backend/server",
     "client": "npm start --prefix client",
     "dev": " concurrently \"npm run server\" \"npm run client\" ",
-    "deploy": " concurrently \"npm run start\" \"npm run client\" "
+    "deploy": " concurrently \"npm run start\" \"npm run client\" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm react-scripts build --prefix client"
   },
   "author": "",
   "license": "ISC",

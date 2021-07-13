@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 const Jobs = () => {
   const { jobs } = useSelector((state) => state.jobList);
 
-  const rJobs = jobs.filter((job, i) => {
+  const rJobs = jobs ? jobs.filter((job, i) => {
     return i < 5
-  })
+  }) : []
 
   return (
     <section className='jobs container pt-4'>

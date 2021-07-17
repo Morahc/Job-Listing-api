@@ -19,10 +19,6 @@ export const registerUser = async (req, res) => {
       });
       if (user) {
         res
-          .json({
-            _id: user._id,
-            name: user.name,
-          })
           .status(201)
           .json({ msg: 'User registered' });
       }

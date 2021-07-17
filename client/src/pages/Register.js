@@ -24,8 +24,9 @@ const Register = ({ history }) => {
   useEffect(() => {
     if (userInfo) {
       history.push('/login');
+      dispatch({ type: 'USER_REGISTER_RESET'})
     }
-  }, [history, userInfo]);
+  }, [history, userInfo, dispatch]);
 
   return (
     <section
@@ -58,6 +59,7 @@ const Register = ({ history }) => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
+              <div className="form-text">Phone Number should be 11 digits long</div>
             </div>
             <div className='py-2'>
               <label className='form-label'>Email</label>
@@ -69,6 +71,7 @@ const Register = ({ history }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              
             </div>
             <div className='py-2'>
               <label className='form-label'>Password</label>
@@ -80,6 +83,7 @@ const Register = ({ history }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <div className="form-text">Password should be 8 - 20 characters long</div>
             </div>
             <div className='form-check py-3'>
               <label className='label'>

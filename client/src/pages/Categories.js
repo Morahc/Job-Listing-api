@@ -21,7 +21,7 @@ const Categories = ({ history }) => {
         </p>
       </div>
       <div className='row align-items-center category-container'>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='food'>
             <i data-category='food' className='material-icons-outlined'>
               restaurant
@@ -29,7 +29,7 @@ const Categories = ({ history }) => {
             <p data-category='food'>Food</p>
           </div>
         </div>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='construction'>
             <i data-category='construction' className='material-icons-outlined'>
               construction
@@ -37,7 +37,7 @@ const Categories = ({ history }) => {
             <p data-category='construction'>Construction</p>
           </div>
         </div>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='industry'>
             <i data-category='industry' className='material-icons-outlined'>
               precision_manufacturing
@@ -45,7 +45,7 @@ const Categories = ({ history }) => {
             <p data-category='industry'>Industry</p>
           </div>
         </div>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='transportation'>
             <i data-category='transportation' className='material-icons-sharp'>
               local_shipping
@@ -53,7 +53,7 @@ const Categories = ({ history }) => {
             <p data-category='transportation'>Transportation</p>
           </div>
         </div>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='health-care'>
             <i data-category='health-care' className='material-icons-sharp'>
               local_hospital
@@ -61,7 +61,7 @@ const Categories = ({ history }) => {
             <p data-category='health-care'>Health Care</p>
           </div>
         </div>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='finance'>
             <i data-category='finance' className='material-icons-outlined'>
               account_balance
@@ -69,7 +69,7 @@ const Categories = ({ history }) => {
             <p data-category='finance'>Accounting & Finance</p>
           </div>
         </div>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='it'>
             <i data-category='IT' className='material-icons-sharp'>
               computer
@@ -77,7 +77,7 @@ const Categories = ({ history }) => {
             <p data-category='IT'>IT</p>
           </div>
         </div>
-        <div className='col-6 col-md-3' onClick={(e) => handleClick(e)}>
+        <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>
           <div className='border white' data-category='others'>
             <i data-category='others' className='material-icons-sharp'>
               work

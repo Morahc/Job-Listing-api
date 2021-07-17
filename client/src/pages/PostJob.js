@@ -57,7 +57,7 @@ const PostJob = ({ history }) => {
     case 1:
       return (
         <div className='container postjob'>
-          <form className='container w-50 border px-5 py-3'>
+          <form className='container w-75 border px-5 py-3'>
             <h2 className='mb-3'>Post Job - Step 1</h2>
             <div className='py-1'>
               <label className='form-label'>Job Name</label>

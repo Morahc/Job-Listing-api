@@ -31,7 +31,7 @@ section > .hero-area {
     margin-bottom: 40px;
   }
   .hero-header h4 {
-    font-size: 350%;
+    font-size: 250%;
   }
 }
 
@@ -157,7 +157,7 @@ section > .hero-area {
 }
 
 .social-icons span:hover {
-  color:#6791fa91
+  color: #6791fa91;
 }
 .website-rights {
   color: #fff;
@@ -171,11 +171,11 @@ section > .hero-area {
 .register {
   height: 100vh;
 }
-.register > .form-container {
+.register .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin-top: 30px;
 }
 .register .form-container form {
   background-color: #fff;
@@ -184,17 +184,21 @@ section > .hero-area {
   align-self: center;
   font-size: 14px !important;
 }
+.form-check {
+  padding-left: 0 !important;
+}
 
 /*********LOGIN STYLES************/
 
 .login {
   height: 100vh;
 }
+
 .login .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin-top: 90px;
 }
 .login .form-container form {
   background-color: #fff;
@@ -263,6 +267,7 @@ section > .hero-area {
   align-items: center;
 }
 .dash {
+  position: relative;
   padding: 0 !important;
 }
 .sidenav {
@@ -276,7 +281,6 @@ section > .hero-area {
   margin: 0 !important;
   color: #fff;
   background-color: var(--primary);
-  border: 1px solid #fff;
 }
 .sidenav-header .dp {
   height: 50px;
@@ -318,10 +322,10 @@ section > .hero-area {
   border: 1px solid var(--primary);
 }
 .tab-container {
-  padding: 0;
+  padding:30px;
   margin: 0;
   overflow: auto;
-  height: 450px;
+  height: 500px;
 }
 .tab-content {
   padding: 1rem;
@@ -335,6 +339,40 @@ section > .hero-area {
 .job-cta span {
   cursor: pointer;
   color: var(--primary);
+}
+.sidebar-menu {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  .dash {
+    font-size: 80%;
+  }
+  .job-desc {
+    font-size: 13px;
+  }
+  .dash button {
+    font-size: 12px;
+    height: 30px;
+  }
+  .sidenav{
+    position: absolute;
+    height: 100%;
+    width: 35%;
+    left:-100%;
+    border-right: 0.5px solid rgba(65, 62, 62, 0.212);
+    background-color: #fff;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+  }
+  .sidenav.active {
+    left: 0;
+  }.sidebar-menu {
+    display: block;
+    cursor: pointer;
+    font-size: 30px;
+    margin: 3px 2px;
+  }
 }
 
 /************POST JOB STYLES**************/

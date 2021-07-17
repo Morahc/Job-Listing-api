@@ -30,7 +30,7 @@ export const userLogin = (email, password) => async (dispatch) => {
 };
 
 export const userRegister =
-  (email, password, name, isEmployer, phone) => async (dispatch) => {
+  (name, email, password, isEmployer, phone) => async (dispatch) => {
     try {
       dispatch({ type: 'USER_REGISTER_REQUEST' });
 
@@ -42,7 +42,7 @@ export const userRegister =
 
       const { data } = await axios.post(
         '/user',
-        { email, password, name, isEmployer, phone },
+        { name, email, password, isEmployer, phone },
         config
       );
 
@@ -169,6 +169,7 @@ export const acceptUser = (id) => async (dispatch, getState) => {
 export const logout = () => async (dispatch) => {
   localStorage.removeItem('userInfo');
   dispatch({ type: 'USER_PROFILE_RESET' });
+  dispatch({ type: 'USER_REGISTER_RESET' });
   dispatch({ type: 'USER_LOGOUT' });
   dispatch({ type: 'USER_JOB_RESET' });
   dispatch({ type: 'JOB_RESET' });

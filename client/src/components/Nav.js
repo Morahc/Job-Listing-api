@@ -1,51 +1,31 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 import './Navbar.css';
 
 const Nav = () => {
-  const [click, setClick] = useState(false);
+  // const [click, setClick] = useState(false);
 
-  const handleClick = () => {
-    setClick(!click);
-  };
-
-  // const [offset, setOffset] = useState(0);
-
-  // useEffect(() => {
-  //   window.onscroll = () => {
-  //     setOffset(window.pageYOffset);
-  //   };
-  // }, []);
+  // const handleClick = () => {
+  //   setClick(!click);
+  // };
 
   return (
     <>
-      <header
-      // style={
-      //   offset >= 90
-      //     ? {
-      //         backgroundImage: `url(/img/email-pattern.png)`,
-      //         position: 'sticky',
-      //         top: 0,
-      //         boxShadow: '0 .5rem 1rem rgba(90, 83, 83, 0.15)',
-      //       }
-      //     : {}
-      // }
-      >
+      <header>
         <div className='navbar container col-12'>
           <Link to='/' className='navbar-brand p-0'>
             JobFinder
           </Link>
-          <div className='menu-icon d-md-none' onClick={handleClick}>
+          {/* <div className='menu-icon d-md-none' onClick={handleClick}>
             {click ? (
               <i className='material-icons'>close</i>
             ) : (
               <i className='material-icons'>menu</i>
             )}
-          </div>
-          <nav>
-            <ul className={click ? 'nav active' : 'nav'}>
-              <li className='nav-item'>
+          </div> */}
+          <nav className= 'navbar-nav'>
+            <ul className='nav'>
+              {/* <li className='nav-item'>
                 <a href='#about' className='nav-link'>
                   About
                 </a>
@@ -54,7 +34,7 @@ const Nav = () => {
                 <a href='#contact' className='nav-link'>
                   Contact
                 </a>
-              </li>
+              </li> */}
               <li className='nav-item me-3'>
                 <Button
                   buttonStyle='btn--secondary'

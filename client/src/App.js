@@ -23,7 +23,6 @@ function App() {
       <Router>
         <Switch>
           <Route path='/job/:id' component={JobDetails} exact/>
-          <Route path='/job/:id/applicants' component={JobDetails} exact/>
           <Route path='/job' component={Jobs} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />

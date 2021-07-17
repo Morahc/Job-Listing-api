@@ -8,15 +8,15 @@ header .navbar-brand {
   color: var(--secondary);
 }
 header .nav .nav-link {
-  color: var(--primary)
+  color: var(--primary);
 }
-.nav {
+.navbar-nav ul {
   display: flex;
   align-items: center;
 }
 
 @media (max-width: 768px) {
-  nav {
+  .navbar-nav.active {
     display: none;
   }
 }

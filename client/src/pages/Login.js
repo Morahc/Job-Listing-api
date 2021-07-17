@@ -24,40 +24,45 @@ const Login = ({ history }) => {
   }, [userInfo, history, error]);
 
   return (
-    <section className='login container pt-4'  style={{ backgroundImage: "url('/img/email-pattern.png')" }} >
-      {error && <Message message={error} />}
-      <Back />
-      <div className=' form-container'>
-        <form className='shadow' onSubmit={handleSubmit}>
-          <h2 className='text-center'>Login</h2>
-          <div className='py-3'>
-            <label className='form-label'>Email</label>
-            <input
-              type='email'
-              className='form-control'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className='py-3'>
-            <label className='form-label'>Password</label>
-            <input
-              type='password'
-              className='form-control'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className=' text-center py-2'>
-            <button className='button btn--medium btn--primary' type='submit'>
-              Login
-            </button>
-          </div>
-          <p className='form-text text-center'>
-            Don't have an account?
-            <Link to='/register'>Sign Up</Link>
-          </p>
-        </form>
+    <section
+      className='login '
+      style={{ backgroundImage: "url('/img/email-pattern.png')" }}
+    >
+      <div className='container pt-4'>
+        {error && <Message message={error} />}
+        <Back />
+        <div className='form-container'>
+          <form className='shadow' onSubmit={handleSubmit}>
+            <h2 className='text-center'>Login</h2>
+            <div className='py-3'>
+              <label className='form-label'>Email</label>
+              <input
+                type='email'
+                className='form-control'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className='py-3'>
+              <label className='form-label'>Password</label>
+              <input
+                type='password'
+                className='form-control'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className=' text-center py-2'>
+              <button className='button btn--medium btn--primary' type='submit'>
+                Login
+              </button>
+            </div>
+            <p className='form-text text-center'>
+              Don't have an account?
+              <Link to='/register'>Sign Up</Link>
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );

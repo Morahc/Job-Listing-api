@@ -16,6 +16,7 @@ import ScreenLoader from '../components/ScreenLoader';
 import { deletejob, removeBookmark } from '../action/jobAction';
 
 const Dash = ({ history }) => {
+  const [click, setClick] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState();
@@ -96,18 +97,41 @@ const Dash = ({ history }) => {
     bookmarkSuccess,
   ]);
 
+  const showNav = () => {
+    if (window.innerWidth <= 990) {
+      setClick(true);
+    } else {
+      setClick(false);
+    }
+  };
+
+  useEffect(() => {
+    showNav();
+  }, []);
+
+  window.addEventListener('resize', showNav);
+
   return (
     <>
       {profileLoading ? (
         <ScreenLoader />
       ) : (
-        <section className='dashboard row' >
+        <section className='dashboard row'>
           <Nav />
           <Tabs
-            className='mt-5 row col-9 justify-content-center dash shadow'
+            className='mt-5 row col-md-9 col-11 justify-content-center dash shadow'
             selectedTabClassName='react-tabs__tab--selected'
           >
-            <div className='col-md-3 sidenav'>
+            <span
+              className='col-1 material-icons-round position-absolute top-0 end-0 sidebar-menu'
+              onClick={() => setClick(!click)}
+            >
+              menu
+            </span>
+
+            <div
+              className={click ? 'col-md-3 sidenav' : 'col-md-3 sidenav active'}
+            >
               <div className='sidenav-header row justify-content-center align-items-center'>
                 <div className='col-10'>
                   <h5>Hi {user.name}</h5>
@@ -115,9 +139,11 @@ const Dash = ({ history }) => {
                 </div>
               </div>
               <TabList className='sidenav-nav'>
-                <Tab>{!userInfo.isEmployer ? 'Dashboard' : 'Jobs'}</Tab>
-                <Tab>Bookmarks</Tab>
-                <Tab>Profile</Tab>
+                <Tab onClick={() => setClick(!click)}>
+                  {!userInfo.isEmployer ? 'Dashboard' : 'Jobs'}
+                </Tab>
+                <Tab onClick={() => setClick(!click)}>Bookmarks</Tab>
+                <Tab onClick={() => setClick(!click)}>Profile</Tab>
               </TabList>
               <button
                 className='button btn--medium btn--primary logout'
@@ -126,7 +152,7 @@ const Dash = ({ history }) => {
                 Logout
               </button>
             </div>
-            <div className='col-md-9 col-12 border tab-container scroll--simple'>
+            <div className='col-lg-9 col-12 border tab-container scroll--simple'>
               <div className='tab-content'>
                 {!userInfo.isEmployer ? (
                   <TabPanel className='tab'>
@@ -198,11 +224,13 @@ const Dash = ({ history }) => {
                         jobs.map((job) => (
                           <div className='d-block'>
                             <div
-                              className='job border py-1 px-4 mt-4 shadow position-relative'
+                              className='job border py-1 px-4 mt-4 position-relative'
                               key={job._id}
                             >
                               <div className='job-desc d-flex flex-column'>
-                                <span>{job.jobName}</span>
+                                <span>
+                                  <b>{job.jobName}</b>
+                                </span>
                                 <span>{job.location}</span>
                                 <span>
                                   {moment(job.createdAt)

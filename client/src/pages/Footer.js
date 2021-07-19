@@ -20,8 +20,8 @@ const Footer = () => {
     <>
       {alert && <Alert alert={alert} setAlert={setAlert}></Alert>}
       <section className='footer'>
-        <div className='footer-container container py-4 row'>
-          <div className='d-flex flex-column justify-content-between col-12 col-md-6'>
+        <div className='footer-container container py-4 row align-items-center'>
+          <div className='d-flex flex-column justify-content-between col-12 col-md-6 align-self-center footer-text'>
             <div className='footer-logo'>
               <div className='social-logo'>JobFinder</div>
             </div>
@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
             <small className='website-rights'>JobFinder © 2021</small>
           </div>
-          <div className='footer-subscription col-12 col-md-6'>
+          <div className='footer-subscription col-12 col-md-6 align-self-center'>
             <p className='footer-subscription-text'>
               Subscribe to our newsletter
             </p>
@@ -41,14 +41,14 @@ const Footer = () => {
                 <input
                   required
                   type='email'
-                  className='form-control px-4'
+                  className='form-control px-2'
                   placeholder='youremail@domain.com'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
                   type='submit'
-                  className='button btn--medium btn--secondary'
+                  className='btn btn--small btn--secondary'
                 >
                   Subscribe
                 </button>

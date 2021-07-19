@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap');
 
 :root {
-  --primary: #2F2E41 !important;
+  --primary: #2f2e41 !important;
   --secondary: #6c63ff !important;
 }
 
@@ -29,7 +29,7 @@ textarea {
   border: 1px solid var(--primary) !important;
 }
 
-input[type='checkbox']{
+input[type='checkbox'] {
   border-radius: 1.25rem !important;
 }
 
@@ -61,24 +61,24 @@ input[type='number']:focus,
   box-shadow: none;
   outline: none !important;
 }
- 
+
 .scroll--simple::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 .scroll--simple::-webkit-scrollbar-track {
   border-radius: 10px;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
-.scroll--simple::-webkit-scrollbar-thumb{
+.scroll--simple::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
-.scroll--simple::-webkit-scrollbar-thumb:hover{
-  background: rgba(0,0,0,0.4);
+.scroll--simple::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
 }
-.scroll--simple::-webkit-scrollbar-thumb:active{
-  background: rgba(0,0,0,.7);
+.scroll--simple::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.7);
 }
 .white {
   background-color: #fff;
@@ -101,7 +101,24 @@ input[type='number']:focus,
   /* position: absolute;
   top: 3%; */
 }
-.dash-btn span{
+.dash-btn span {
   font-size: 40px;
   color: var(--primary) !important;
+}
+@media (max-width: 409px) {
+  input[type='text'],
+  input[type='password'],
+  input[type='email'],
+  input[type='tel'],
+  select,
+  textarea {
+    padding: 4px 2px !important;
+  }
+
+  label {
+    font-size: 14px !important;
+  }
+  .badge {
+    font-size: 9px !important;
+  }
 }

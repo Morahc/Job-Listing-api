@@ -11,7 +11,7 @@ const Nav = () => {
 
   return (
     <>
-      <header>
+      <header className='col-12'>
         <div className='navbar container col-12'>
           <Link to='/' className='navbar-brand p-0'>
             JobFinder

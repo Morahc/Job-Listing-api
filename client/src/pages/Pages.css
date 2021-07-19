@@ -9,12 +9,12 @@ section > .hero-area {
   align-items: center;
 }
 .hero-area .form-container {
-  width: 440px !important;
-  height: 480px !important;
+  max-width: 440px !important;
+  max-height: 480px !important;
 }
 
 .home-section .hero-text {
-  letter-spacing: 0.2rem !important;
+  letter-spacing: 0.1rem !important;
 }
 
 @media (max-width: 992px) {
@@ -31,7 +31,13 @@ section > .hero-area {
     margin-bottom: 40px;
   }
   .hero-header h4 {
-    font-size: 250%;
+    font-size: 180%;
+  }
+  .hero-text {
+    font-size: 90%;
+  }
+  .hero-section .form-container div {
+    padding: 0.5rem 0 !important;
   }
 }
 
@@ -52,6 +58,14 @@ section > .hero-area {
     margin: 10px 0;
   }
 }
+@media screen and (max-width: 399px) {
+  .about div > h3 {
+    font-size: 20px !important;
+  }
+  .about div > p {
+    font-size: 16px !important;
+  }
+}
 
 /************CATEGORY STYLES***************/
 
@@ -59,21 +73,26 @@ section > .hero-area {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .category-container .border {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
   height: 200px;
   box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: 0.25s all ease;
 }
 
+.category-container p {
+  font-size: 14px;
+}
 .category-container .border i {
-  font-size: 50px;
+  font-size: 40px;
   margin-bottom: 10px;
   color: var(--primary);
 }
@@ -82,6 +101,13 @@ section > .hero-area {
   border: 1px solid rgba(0, 0, 0, 0.25) !important;
   box-shadow: none;
 }
+
+@media (max-width: 399px) { 
+  .category-container .border {
+    width: 180px;
+    height: 150px;
+  }
+ }
 
 /***********RECENT JOB STYLES**********/
 .jobs .job {
@@ -110,7 +136,11 @@ section > .hero-area {
 }
 
 /**********CONTACT STYLES*************/
-
+@media screen and (max-width: 399px) {
+  .contact .form-container form, .contact .contact-info {
+    padding: 12px 18px !important;
+  }
+}
 /*********FOOTER STYLES************/
 
 .footer {
@@ -145,10 +175,6 @@ section > .hero-area {
   text-decoration: none;
   font-size: 2rem;
 }
-.social-icons {
-  display: flex;
-  align-items: center;
-}
 
 .social-icons span {
   font-size: 14px;
@@ -163,7 +189,21 @@ section > .hero-area {
   color: #fff;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 399px) {
+  .social-logo {
+    font-size: 24px;
+  }
+  .website-rights {
+    font-size: 13px;
+  }
+  .social-icons span {
+    text-align: center;
+  }
+  .footer-text {
+    text-align: center;
+    order: 1;
+  }
 }
 
 /*********REGISTER STYLES************/
@@ -261,13 +301,15 @@ section > .hero-area {
 
 /**************DASH STYLES*************/
 .dashboard {
+  margin: 0;
+  padding: 0;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .dash {
-  position: relative;
+  position: relative !important;
   padding: 0 !important;
 }
 .sidenav {
@@ -352,12 +394,11 @@ section > .hero-area {
   }
   .dash button {
     font-size: 12px;
-    height: 30px;
   }
   .sidenav{
     position: absolute;
     height: 100%;
-    width: 35%;
+    width: 50%;
     left:-100%;
     border-right: 0.5px solid rgba(65, 62, 62, 0.212);
     background-color: #fff;
@@ -371,10 +412,22 @@ section > .hero-area {
     display: block;
     cursor: pointer;
     font-size: 30px;
-    margin: 3px 2px;
+    position: absolute;
+    right: 6%;
   }
 }
 
+@media screen and (max-width: 460px) {
+  .tab-container {
+    padding: 0.5rem !important;
+  }
+  .tab-container .job {
+    padding: 0.5rem 1rem !important;
+  }
+  .tab-content {
+    padding: .5rem ;
+  }
+}
 /************POST JOB STYLES**************/
 .postjob {
   height: 100vh;

@@ -66,7 +66,7 @@ const Categories = ({ history }) => {
             <i data-category='finance' className='material-icons-outlined'>
               account_balance
             </i>
-            <p data-category='finance'>Accounting & Finance</p>
+            <p data-category='finance'>Finance</p>
           </div>
         </div>
         <div className='col-6 col-lg-3 col-md-4 col-sm-4 col-xs-6' onClick={(e) => handleClick(e)}>

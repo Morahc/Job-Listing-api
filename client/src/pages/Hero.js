@@ -43,7 +43,7 @@ const Hero = () => {
           <div className=' form-container shadow white'>
             <form className=' py-4 px-5'>
               <h5 className='text-center'>Find a job</h5>
-              <div className='py-4'>
+              <div className='py-3'>
                 <label className='form-label'>Job name or keyword</label>
                 <input
                   value={name}
@@ -52,7 +52,7 @@ const Hero = () => {
                   className='form-control'
                 />
               </div>
-              <div className='py-4'>
+              <div className='py-3'>
                 <label className='form-label'>Location</label>
                 <input
                   value={location}
@@ -61,7 +61,7 @@ const Hero = () => {
                   className='form-control'
                 />
               </div>
-              <div className='py-4'>
+              <div className='py-3'>
                 <label className='form-label'>Category</label>
                 <input
                   value={category}

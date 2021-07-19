@@ -119,11 +119,11 @@ const Dash = ({ history }) => {
         <section className='dashboard row'>
           <Nav />
           <Tabs
-            className='mt-5 row col-md-9 col-11 justify-content-center dash shadow'
+            className='mt-5 row col-lg-9 col-11 justify-content-center dash border'
             selectedTabClassName='react-tabs__tab--selected'
           >
             <span
-              className='col-1 material-icons-round position-absolute top-0 end-0 sidebar-menu'
+              className='col-1 material-icons-round sidebar-menu'
               onClick={() => setClick(!click)}
             >
               menu
@@ -176,13 +176,13 @@ const Dash = ({ history }) => {
                                     .fromNow()}
                                 </span>
                               </div>
-                              <span
-                                style={{ backgroundColor: '#6c63ff' }}
-                                className='badge'
-                              >
-                                {job.jobType}
-                              </span>
-                              <div className='job-cta'>
+                              <div className='bagdes text-center'>
+                                <span
+                                  style={{ backgroundColor: '#6c63ff' }}
+                                  className='badge d-block'
+                                >
+                                  {job.jobType}
+                                </span>
                                 {job.applicants[0].isAccepted ? (
                                   <span className='badge me-2 bg-success'>
                                     Accepted
@@ -192,6 +192,9 @@ const Dash = ({ history }) => {
                                     Pending
                                   </span>
                                 )}
+                              </div>
+
+                              <div className='job-cta'>
                                 <Button
                                   buttonSize='btn--small'
                                   location={`job/${job._id}`}
@@ -228,9 +231,7 @@ const Dash = ({ history }) => {
                               key={job._id}
                             >
                               <div className='job-desc d-flex flex-column'>
-                                <span>
-                                  <b>{job.jobName}</b>
-                                </span>
+                                <span>{job.jobName}</span>
                                 <span>{job.location}</span>
                                 <span>
                                   {moment(job.createdAt)
